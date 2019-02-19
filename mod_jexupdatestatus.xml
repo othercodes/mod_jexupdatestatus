@@ -25,9 +25,26 @@
     </files>
     <config>
         <fields name="params">
-            <fieldset>
-                <field name="serverurl" type="contact" label="MOD_JEXUPDATESTATUS_FIELD_SERVERURL_LABEL"
-                       description="MOD_JEXUPDATESTATUS_FIELD_SERVERURL_DESC"/>
+            <fieldset name="basic">
+                <field name="serverurl" type="text" default="https://updates.othercode.es/index.xml"
+                       label="MOD_JEXUPDATESTATUS_FIELD_SERVER_URL_LABEL"
+                       description="MOD_JEXUPDATESTATUS_FIELD_SERVER_URL_DESC"/>
+                <field name="countextensions" type="list" default="1"
+                       label="MOD_JEXUPDATESTATUS_FIELD_COUNT_EXTENSIONS_LABEL"
+                       description="MOD_JEXUPDATESTATUS_FIELD_COUNT_EXTENSIONS_DESC">
+                    <option value="1">JYES</option>
+                    <option value="0">JNO</option>
+                </field>
+                <field name="showtype" type="list" default="1" label="MOD_JEXUPDATESTATUS_FIELD_SHOW_TYPE_LABEL"
+                       description="MOD_JEXUPDATESTATUS_FIELD_SHOW_TYPE_DESC">
+                    <option value="1">JYES</option>
+                    <option value="0">JNO</option>
+                </field>
+                <field name="showerrors" type="list" default="1" label="MOD_JEXUPDATESTATUS_FIELD_SHOW_ERROR_LABEL"
+                       description="MOD_JEXUPDATESTATUS_FIELD_SHOW_ERROR_DESC">
+                    <option value="1">JYES</option>
+                    <option value="0">JNO</option>
+                </field>
             </fieldset>
             <fieldset name="advanced">
                 <field name="layout" type="modulelayout" label="JFIELD_ALT_LAYOUT_LABEL"
