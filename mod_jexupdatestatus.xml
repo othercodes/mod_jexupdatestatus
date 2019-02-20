@@ -29,6 +29,11 @@
                 <field name="serverurl" type="text" default="https://updates.othercode.es/index.xml"
                        label="MOD_JEXUPDATESTATUS_FIELD_SERVER_URL_LABEL"
                        description="MOD_JEXUPDATESTATUS_FIELD_SERVER_URL_DESC"/>
+                <field name="showinformation" type="list" default="1" label="MOD_JEXUPDATESTATUS_FIELD_SHOW_INFORMATION_LABEL"
+                       description="MOD_JEXUPDATESTATUS_FIELD_SHOW_INFORMATION_DESC">
+                    <option value="1">JYES</option>
+                    <option value="0">JNO</option>
+                </field>
                 <field name="countextensions" type="list" default="1"
                        label="MOD_JEXUPDATESTATUS_FIELD_COUNT_EXTENSIONS_LABEL"
                        description="MOD_JEXUPDATESTATUS_FIELD_COUNT_EXTENSIONS_DESC">

@@ -20,6 +20,13 @@ defined('_JEXEC') or die('Restricted access');
         </div>
     <?php endif; ?>
 
+    <?php if ($show_information == 1): ?>
+    <div class="form-control">
+        <div><strong><?php echo $data->get('info.name')?></strong></div>
+        <div><?php echo $data->get('info.description')?></div>
+    </div>
+    <?php endif; ?>
+
     <div class="form-control">
         <div class="jexupdate-info-status"><?php echo JText::_('MOD_JEXUPDATESTATUS_STATUS_LABEL'); ?>
             <span class="label label-<?php echo $data->get('css.string'); ?>">

@@ -13,6 +13,7 @@ $data = new JObject();
 $server_url = trim($params->get('serverurl', null));
 $count_extensions = $params->get('countextensions', 0);
 $show_type = $params->get('showtype', 0);
+$show_information = $params->get('showinformation', 0);
 
 try {
 
@@ -35,9 +36,21 @@ try {
             switch ($xml->getName()) {
                 case 'extensionset';
                     $data->set('type', 'MOD_JEXUPDATESTATUS_TYPE_COLLECTION');
+                    if ($show_information == 1) {
+                        if (isset($xml['name'])) {
+                            $data->set('info.name', $xml['name']);
+                        }
+                        if (isset($xml['description'])) {
+                            $data->set('info.description', $xml['description']);
+                        }
+                    }
                     break;
                 case 'updates';
                     $data->set('type', 'MOD_JEXUPDATESTATUS_TYPE_EXTENSION');
+                    if ($show_information == 1) {
+                        $data->set('info.name', '');
+                        $data->set('info.description', '');
+                    }
                     break;
                 default:
                     throw new \Exception('MOD_JEXUPDATESTATUS_EX_UNDEFINED_SERVER_TYPE', 400);
