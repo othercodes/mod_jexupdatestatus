@@ -14,6 +14,7 @@ $server_url = trim($params->get('serverurl', null));
 $count_extensions = $params->get('countextensions', 0);
 $show_type = $params->get('showtype', 0);
 $show_information = $params->get('showinformation', 0);
+$show_errors = $params->get('showerrors', 0);
 
 try {
 
