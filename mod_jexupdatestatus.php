@@ -4,17 +4,13 @@
  * @package otherCode.Joomla
  * @subpackage mod_jexupdatestatus
  * @copyright Copyright (C) 2019 OtherCode. All rights reserved.
- * @version 1.0.0
+ * @version 1.2.0
  * @license MIT
  */
 defined('_JEXEC') or die('Restricted access');
 
 $data = new JObject();
 $server_url = trim($params->get('serverurl', null));
-$count_extensions = $params->get('countextensions', 0);
-$show_type = $params->get('showtype', 0);
-$show_information = $params->get('showinformation', 0);
-$show_errors = $params->get('showerrors', 0);
 
 try {
 
@@ -37,7 +33,7 @@ try {
             switch ($xml->getName()) {
                 case 'extensionset';
                     $data->set('type', 'MOD_JEXUPDATESTATUS_TYPE_COLLECTION');
-                    if ($show_information == 1) {
+                    if ($params->get('showinformation', 0) == 1) {
                         if (isset($xml['name'])) {
                             $data->set('info.name', $xml['name']);
                         }
@@ -45,10 +41,20 @@ try {
                             $data->set('info.description', $xml['description']);
                         }
                     }
+
+                    if ($params->get('showextensionlist', 0) == 1) {
+                        $buffer = [];
+                        foreach ($xml->extension as $extension) {
+                            $buffer[] = $extension;
+                        }
+
+                        $data->set('extensions', $buffer);
+                    }
+
                     break;
                 case 'updates';
                     $data->set('type', 'MOD_JEXUPDATESTATUS_TYPE_EXTENSION');
-                    if ($show_information == 1) {
+                    if ($params->get('showinformation', 0) == 1) {
                         $data->set('info.name', '');
                         $data->set('info.description', '');
                     }
@@ -60,7 +66,8 @@ try {
             $data->set('status', 'MOD_JEXUPDATESTATUS_STATUS_ONLINE');
             $data->set('css.string', 'success');
 
-            if ($data->get('type') == 'MOD_JEXUPDATESTATUS_TYPE_COLLECTION' && $count_extensions == 1) {
+            if ($data->get('type') == 'MOD_JEXUPDATESTATUS_TYPE_COLLECTION' && $params->get('countextensions',
+                    0) == 1) {
                 $data->set('total.extensions', $xml->count());
             }
 
@@ -85,6 +92,5 @@ try {
 }
 
 $moduleclass_sfx = $params->get('moduleclass_sfx');
-$layout = $params->get('layout', 'default');
 
-require JModuleHelper::getLayoutPath('mod_jexupdatestatus', $layout);
+require JModuleHelper::getLayoutPath('mod_jexupdatestatus', $params->get('layout', 'default'));

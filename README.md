@@ -4,7 +4,7 @@ Small Joomla module to display JEXUpdate Server status.
 
 ## Installation
 
-You only have to download the zip and install normally in Joomla!
+You only have to download the zip from the [release page](https://github.com/othercodes/mod_jexupdatestatus/releases) and install normally in Joomla!
 
 ## Configuration
 

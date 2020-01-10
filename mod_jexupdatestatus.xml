@@ -34,6 +34,11 @@
                     <option value="1">JYES</option>
                     <option value="0">JNO</option>
                 </field>
+                <field name="showextensionlist" type="list" default="1" label="MOD_JEXUPDATESTATUS_FIELD_SHOW_EXTENSION_LIST_LABEL"
+                       description="MOD_JEXUPDATESTATUS_FIELD_SHOW_EXTENSION_LIST_DESC">
+                    <option value="1">JYES</option>
+                    <option value="0">JNO</option>
+                </field>
                 <field name="countextensions" type="list" default="1"
                        label="MOD_JEXUPDATESTATUS_FIELD_COUNT_EXTENSIONS_LABEL"
                        description="MOD_JEXUPDATESTATUS_FIELD_COUNT_EXTENSIONS_DESC">
